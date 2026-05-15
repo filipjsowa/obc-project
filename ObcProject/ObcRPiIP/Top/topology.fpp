@@ -34,6 +34,8 @@ module ObcProject {
     instance comDriver
     instance cmdSeq
     instance orchestrator
+    instance tcpClient
+    instance lcdManager
 
   # ----------------------------------------------------------------------
   # Pattern graph specifiers
@@ -133,6 +135,10 @@ module ObcProject {
 
     connections ObcRPiIP {
         MpuImu.imuManager.imu_data -> orchestrator.imu_data
+        lcdManager.tcpSend -> tcpClient.$send
+        tcpClient.$recv -> lcdManager.tcpRecv
+        tcpClient.allocate -> bufferMgr.bufferGetCallee
+        tcpClient.deallocate -> bufferMgr.bufferSendIn
     }
 
   }

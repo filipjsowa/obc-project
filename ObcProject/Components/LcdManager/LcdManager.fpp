@@ -1,13 +1,11 @@
 module ObcProject {
     @ Manager for the lcd
-    active component LcdManager {
+    passive component LcdManager {
 
         # # One async command/port is required for active components
         # # This should be overridden by the developers with a useful command/port
         # @ TODO
         # async command TODO opcode 0
-
-        async input port imu_data: MpuImu.ImuDataPort
 
         ##############################################################################
         #### Uncomment the following examples to start customizing your component ####
@@ -49,5 +47,17 @@ module ObcProject {
         @Port to set the value of a parameter
         param set port prmSetOut
 
+        sync input port imu_data: MpuImu.ImuDataPort
+        # import Svc.BufferAllocation
+
+        @ Allocation failed event
+        # event MemoryAllocationFailed() severity warning low id 0 format "Failed to allocate memory"
+
+        # @ UDP send port: sends an EDL packet to the UDP driver
+        # output port tcpSend: Drv.ByteStreamSend
+        output port tcpSend: Drv.ByteStreamSend
+
+        # @ UDP recv port: receives an EDL packet from the UDP driver
+        guarded input port tcpRecv: Drv.ByteStreamData
     }
 }

@@ -67,4 +67,10 @@ module ObcProject {
 
   instance orchestrator: Orchestrator base id 0x10015000
 
+  instance tcpClient: Drv.TcpClient base id 0x10016000
+
+  instance lcdManager: LcdManager base id 0x10017000
+
+  instance bufferMgr: Svc.BufferManager base id 0x10018000
+
 }
