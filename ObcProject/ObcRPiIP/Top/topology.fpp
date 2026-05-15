@@ -36,6 +36,7 @@ module ObcProject {
     instance orchestrator
     instance tcpClient
     instance lcdManager
+    instance bufferMgr
 
   # ----------------------------------------------------------------------
   # Pattern graph specifiers
