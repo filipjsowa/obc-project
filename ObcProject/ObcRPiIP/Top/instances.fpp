@@ -65,4 +65,6 @@ module ObcProject {
 
   instance comDriver: Drv.TcpServer base id 0x10014000
 
+  instance orchestrator: Orchestrator base id 0x10015000
+
 }

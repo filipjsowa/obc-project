@@ -3,4 +3,4 @@
 	url = https://github.com/nasa/fprime.git
 [submodule "lib/fprime-sensors"]
 	path = lib/fprime-sensors
-	url = https://github.com/filipjsowa/fprime-sensors.git
+	url = git@github.com:filipjsowa/fprime-sensors.git

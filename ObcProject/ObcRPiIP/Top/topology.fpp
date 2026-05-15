@@ -33,6 +33,7 @@ module ObcProject {
     instance timer
     instance comDriver
     instance cmdSeq
+    instance orchestrator
 
   # ----------------------------------------------------------------------
   # Pattern graph specifiers
@@ -131,7 +132,7 @@ module ObcProject {
     }
 
     connections ObcRPiIP {
-
+        MpuImu.imuManager.imu_data -> orchestrator.imu_data
     }
 
   }
