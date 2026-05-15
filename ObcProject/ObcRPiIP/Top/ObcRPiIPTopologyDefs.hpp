@@ -24,6 +24,8 @@
 
 // Include autocoded FPP constants
 #include "ObcProject/ObcRPiIP/Top/FppConstantsAc.hpp"
+#include "fprime-sensors/MpuImu/Subtopology/SubtopologyTopologyDefs.hpp"
+
 
 /**
  * \brief required ping constants
@@ -68,6 +70,7 @@ struct TopologyState {
     ComCcsds::SubtopologyState comCcsds;         //!< Subtopology state for ComCcsds 
     DataProducts::SubtopologyState dataProducts; //!< Subtopology state for DataProducts
     FileHandling::SubtopologyState fileHandling; //!< Subtopology state for FileHandling
+    MpuImu::SubtopologyState mpu;
 };
 
 namespace PingEntries = ::PingEntries;
