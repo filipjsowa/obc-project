@@ -45,6 +45,9 @@ module ObcProject {
         @ Get data from the imu
         sync input port imu_data: MpuImu.ImuDataPort
 
+        output port imu_data_out: MpuImu.ImuDataPort
+
+
         event imuReceived(imuData: string) severity activity high id 0 format "Received data {}"
 
     }

@@ -34,7 +34,7 @@ namespace ObcProject {
  *
  * \param state: object shuttling CLI arguments (e.g. hostname/port, or UART baudrate) needed to construct the topology
  */
-void setupTopology(const TopologyState& state);
+void setupTopology(const TopologyState& state, Svc::BufferManager::BufferBins& bins);
 
 /**
  * \brief teardown the F´ topology
@@ -57,7 +57,7 @@ void setupTopology(const TopologyState& state);
  *
  * \param state: state object provided to setupTopology
  */
-void teardownTopology(const TopologyState& state);
+void teardownTopology(const TopologyState& state, Svc::BufferManager::BufferBins& bins);
 
 /**
  * \brief cycle the rate group driver at a crude rate

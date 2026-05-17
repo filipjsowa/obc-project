@@ -48,16 +48,20 @@ module ObcProject {
         param set port prmSetOut
 
         sync input port imu_data: MpuImu.ImuDataPort
-        # import Svc.BufferAllocation
 
-        @ Allocation failed event
-        # event MemoryAllocationFailed() severity warning low id 0 format "Failed to allocate memory"
-
-        # @ UDP send port: sends an EDL packet to the UDP driver
-        # output port tcpSend: Drv.ByteStreamSend
         output port tcpSend: Drv.ByteStreamSend
 
-        # @ UDP recv port: receives an EDL packet from the UDP driver
         guarded input port tcpRecv: Drv.ByteStreamData
+        sync input port tcpReady: Drv.ByteStreamReady
+        output port tcpRecvReturnIn: Fw.BufferSend
+
+
+
+        @ Add allocation and deallocation output ports for interfacing with a BufferManager
+        import Svc.BufferAllocation
+
+        @ Allocation failed event
+        event MemoryAllocationFailed() severity warning low id 0 format "Failed to allocate memory"
+
     }
 }

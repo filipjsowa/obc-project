@@ -88,10 +88,15 @@ int main(int argc, char* argv[]) {
     signal(SIGTERM, signalHandler);
     Fw::Logger::log("Hit Ctrl-C to quit\n");
 
+    // That's needed for the buffer manager
+    // It's not really a good place to initilize that
+    // But it will work
+    Svc::BufferManager::BufferBins bins;
+
     // Setup, cycle, and teardown topology
-    ObcProject::setupTopology(inputs);
+    ObcProject::setupTopology(inputs, bins);
     ObcProject::startRateGroups(Fw::TimeInterval(1,0));  // Program loop cycling rate groups at 1Hz
-    ObcProject::teardownTopology(inputs);
+    ObcProject::teardownTopology(inputs, bins);
     Fw::Logger::log("Exiting...\n");
     return 0;
 }

@@ -8,7 +8,6 @@
 #define ObcProject_LcdManager_HPP
 
 #include "ObcProject/Components/LcdManager/LcdManagerComponentAc.hpp"
-#include "Drv/TcpClient/TcpClientComponentImpl.hpp"
 
 namespace ObcProject {
 
@@ -39,7 +38,13 @@ class LcdManager final : public LcdManagerComponentBase {
                          Fw::Buffer& buffer,
                          const Drv::ByteStreamStatus& status) override;
 
-    Drv::TcpClientComponentImpl comm;
+    //! Handler implementation for tcpReady
+    void tcpReady_handler(FwIndexType portNum  //!< The port number
+                          ) override;
+
+    void send_helper(const MpuImu::ImuData& );
+
+    bool m_tcpReady{false};
 };
 
 }  // namespace ObcProject

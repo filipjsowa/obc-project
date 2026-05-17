@@ -126,6 +126,7 @@ module ObcProject {
       rateGroup3.RateGroupMemberOut[2] -> DataProducts.dpBufferManager.schedIn
       rateGroup3.RateGroupMemberOut[3] -> DataProducts.dpWriter.schedIn
       rateGroup3.RateGroupMemberOut[4] -> DataProducts.dpMgr.schedIn
+      rateGroup3.RateGroupMemberOut[5] -> bufferMgr.schedIn
     }
 
     connections CdhCore_cmdSeq {
@@ -136,8 +137,15 @@ module ObcProject {
 
     connections ObcRPiIP {
         MpuImu.imuManager.imu_data -> orchestrator.imu_data
+        orchestrator.imu_data_out -> lcdManager.imu_data
+
         lcdManager.tcpSend -> tcpClient.$send
+        lcdManager.allocate -> bufferMgr.bufferGetCallee
+        lcdManager.deallocate -> bufferMgr.bufferSendIn
+        lcdManager.tcpRecvReturnIn -> tcpClient.recvReturnIn
+        
         tcpClient.$recv -> lcdManager.tcpRecv
+        tcpClient.ready -> lcdManager.tcpReady
         tcpClient.allocate -> bufferMgr.bufferGetCallee
         tcpClient.deallocate -> bufferMgr.bufferSendIn
     }

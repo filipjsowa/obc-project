@@ -10,6 +10,7 @@
 
 // Necessary project-specified types
 #include <Fw/Types/MallocAllocator.hpp>
+#include <Fw/Types/String.hpp>
 
 // Public functions for use in main program are namespaced with deployment module ObcProject
 // This is also the namespace where the topology components are instantiated by FPP.
@@ -51,7 +52,7 @@ void configureTopology() {
     cmdSeq.allocateBuffer(0, mallocator, 5 * 1024);
 }
 
-void setupTopology(const TopologyState& state) {
+void setupTopology(const TopologyState& state, Svc::BufferManager::BufferBins& bins) {
     // Autocoded initialization. Function provided by autocoder.
     initComponents(state);
     // Autocoded id setup. Function provided by autocoder.
@@ -62,6 +63,30 @@ void setupTopology(const TopologyState& state) {
     regCommands();
     // Autocoded configuration. Function provided by autocoder.
     configComponents(state);
+    // should be ok to do it here
+    memset(&bins, 0, sizeof(bins));
+    // idk about those numbers
+    // they should be big enoug
+    bins.bins[0].bufferSize = 8192;
+    bins.bins[0].numBuffers = 10;
+    bufferMgr.setup(
+        bufferMgr.getIdBase(),
+        0,
+        //I hope that I can use this one
+        mallocator,
+        bins
+    );
+    Fw::String hostname_server{"192.168.68.100"};
+    U16 port_number_server = 9000;
+    tcpClient.configure(hostname_server.toChar(), port_number_server);
+    // so apparently I don't need that
+    // but I already wired everything so I'll leave it
+    // for my future learning
+    Os::TaskString name("ReceiveTask");
+    tcpClient.start(name);
+    // tcpClient.start(name, 56, Default::STACK_SIZE);
+
+
     if (state.hostname != nullptr && state.port != 0) {
         comDriver.configure(state.hostname, state.port);
     }
@@ -91,7 +116,7 @@ void stopRateGroups() {
     timer.quit();
 }
 
-void teardownTopology(const TopologyState& state) {
+void teardownTopology(const TopologyState& state, Svc::BufferManager::BufferBins& bins) {
     // Autocoded (active component) task clean-up. Functions provided by topology autocoder.
     stopTasks(state);
     freeThreads(state);
@@ -100,11 +125,16 @@ void teardownTopology(const TopologyState& state) {
     comDriver.terminate();
     comDriver.stop();
     (void)comDriver.join();
+    
+    // no terminate cause it's a client
+    tcpClient.stop();
+    (void)tcpClient.join();
 
     // Resource deallocation
     cmdSeq.deallocateBuffer(mallocator);
 
     tearDownComponents(state);
+    bufferMgr.cleanup();
     deinitComponents(state);
 }
 };  // namespace ObcProject
