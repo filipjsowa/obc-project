@@ -4,7 +4,6 @@ module ObcProject {
 
         # One async command/port is required for active components
         # This should be overridden by the developers with a useful command/port
-        @ TODO
 
         @ Set servo angle (0–180)
         async command SET_ANGLE(angle: F32)
@@ -23,6 +22,7 @@ module ObcProject {
         # @ Example event
         # event ExampleStateEvent(example_state: Fw.On) severity activity high id 0 format "State set to {}"
         event InvalidAngle(angle: F32) severity warning high format "Invalid angle {}"
+        event PigpioError(code: I32) severity warning high format "pigpio error {}"
         event AngleSet(angle: F32) severity activity high format "Angle {}"
 
         # @ Example port: receiving calls from the rate group

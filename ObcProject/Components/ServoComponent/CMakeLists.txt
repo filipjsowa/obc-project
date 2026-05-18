@@ -19,8 +19,9 @@ register_fprime_library(
         "${CMAKE_CURRENT_LIST_DIR}/ServoComponent.fpp"
     SOURCES
         "${CMAKE_CURRENT_LIST_DIR}/ServoComponent.cpp"
-#   DEPENDS
-#       MyPackage_MyOtherModule
+    DEPENDS
+        pigpio::pigpio
+        Threads::Threads
 )
 
 ### Unit Tests ###

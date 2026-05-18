@@ -9,7 +9,6 @@
 
 #include "ObcProject/Components/ServoComponent/ServoComponentComponentAc.hpp"
 #include <pigpio.h>
-// #include "pigpio.h"
 
 namespace ObcProject {
 
@@ -18,14 +17,22 @@ class ServoDriver {
 public:
 
     ServoDriver(int gpio);
+    ~ServoDriver();
 
-    void setAngle(float angle);
+    int setAngle(float angle);
+    bool isReady() const;
+    int status() const;
 
 private:
 
     int m_gpio;
+    int m_status;
+    bool m_ready;
+    bool m_registered;
+    static int s_users;
+    static bool s_initialized;
 
-    int angleToPulseUs(float angle);
+    int angleToPulseUs(float angle) const;
 
 };
 
@@ -36,7 +43,7 @@ class ServoComponent final : public ServoComponentComponentBase {
     // ----------------------------------------------------------------------
 
     //! Construct ServoComponent object
-    ServoComponent(const char* const compName  //!< The component name
+    ServoComponent(const char* const compName, int gpioPin = 18  //!< The component name
     );
 
     //! Destroy ServoComponent object
@@ -56,7 +63,7 @@ class ServoComponent final : public ServoComponentComponentBase {
                          ) override;
   
   private:
-    ServoDriver m_servo{18};  // GPIO pin 18 (PWM0)
+    ServoDriver m_servo;  // GPIO pin 18 (PWM0)
 };
 
 }  // namespace ObcProject
