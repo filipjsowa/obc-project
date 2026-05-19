@@ -58,7 +58,7 @@ void MathReceiver ::
                 res = val1 / val2;
                 break;
             case MathOp::ANG:
-                res = atan(val1 / val2) * 57.2957795131;
+                res = atan(val1 / val2) * 57.2957795131 + 90;
                 break;
             default:
                 FW_ASSERT(0, op.e);
@@ -78,8 +78,6 @@ void MathReceiver ::
     numMathOps++;
     this->tlmWrite_NUMBER_OF_OPS(numMathOps);
 
-    // Emit telemetry and events
-    this->log_ACTIVITY_HI_OPERATION_PERFORMED(op);
     this->tlmWrite_OPERATION(op);
 
     // Emit result

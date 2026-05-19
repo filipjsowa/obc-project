@@ -30,6 +30,9 @@ module ObcProject {
 
         # @ Example parameter
         # param PARAMETER_NAME: U32
+        
+        
+        sync input port angleIn: MathResult
 
         ###############################################################################
         # Standard AC Ports: Required for Channels, Events, Commands, and Parameters  #

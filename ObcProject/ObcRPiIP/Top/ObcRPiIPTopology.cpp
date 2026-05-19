@@ -19,7 +19,7 @@ namespace ObcProject {
 // Instantiate a malloc allocator for cmdSeq buffer allocation
 Fw::MallocAllocator mallocator;
 
-// The reference topology divides the incoming clock signal (1Hz) into sub-signals: 1Hz, 1/2Hz, and 1/4Hz with 0 offset
+// The reference topology divides the incoming clock signal (20Hz) into sub-signals: (20/20)Hz, 2021Hz, and 20/80Hz with 0 offset
 Svc::RateGroupDriver::DividerSet rateGroupDivisorsSet{{{1, 0}, {2, 0}, {4, 0}}};
 
 // Rate groups may supply a context token to each of the attached children whose purpose is set by the project. The
@@ -76,15 +76,14 @@ void setupTopology(const TopologyState& state, Svc::BufferManager::BufferBins& b
         mallocator,
         bins
     );
-    Fw::String hostname_server{"192.168.68.100"};
-    U16 port_number_server = 9000;
+    Fw::String hostname_server{"192.168.0.103"};
+    U16 port_number_server = 4242;
     tcpClient.configure(hostname_server.toChar(), port_number_server);
     // so apparently I don't need that
     // but I already wired everything so I'll leave it
     // for my future learning
     Os::TaskString name("ReceiveTask");
     tcpClient.start(name);
-    // tcpClient.start(name, 56, Default::STACK_SIZE);
 
 
     if (state.hostname != nullptr && state.port != 0) {
