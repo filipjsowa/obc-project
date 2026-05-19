@@ -37,6 +37,7 @@ module ObcProject {
     instance tcpClient
     instance lcdManager
     instance bufferMgr
+    instance mathReceiver
 
   # ----------------------------------------------------------------------
   # Pattern graph specifiers
@@ -113,6 +114,8 @@ module ObcProject {
       rateGroup1.RateGroupMemberOut[3] -> ComCcsds.comQueue.run
       rateGroup1.RateGroupMemberOut[4] -> ComCcsds.aggregator.timeout
       rateGroup1.RateGroupMemberOut[5] -> MpuImu.imuManager.run
+      rateGroup1.RateGroupMemberOut[6] -> mathReceiver.schedIn
+
 
 
       # Rate group 2
@@ -138,6 +141,7 @@ module ObcProject {
     connections ObcRPiIP {
         MpuImu.imuManager.imu_data -> orchestrator.imu_data
         orchestrator.imu_data_out -> lcdManager.imu_data
+        orchestrator.imu_data_for_angle -> mathReceiver.mathOpIn
 
         lcdManager.tcpSend -> tcpClient.$send
         lcdManager.allocate -> bufferMgr.bufferGetCallee
@@ -148,6 +152,7 @@ module ObcProject {
         tcpClient.ready -> lcdManager.tcpReady
         tcpClient.allocate -> bufferMgr.bufferGetCallee
         tcpClient.deallocate -> bufferMgr.bufferSendIn
+
     }
 
   }
