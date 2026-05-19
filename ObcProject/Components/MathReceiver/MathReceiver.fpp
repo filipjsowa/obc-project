@@ -1,5 +1,5 @@
 # In: MathReceiver.fpp
-module MathProject {
+module ObcProject {
 
   @ Component for receiving and performing a math operation
   queued component MathReceiver {

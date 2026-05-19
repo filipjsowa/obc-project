@@ -1,4 +1,4 @@
-# MathProject::MathReceiver
+# ObcProject::MathReceiver
 
 Your description
 

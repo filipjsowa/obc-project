@@ -7,7 +7,7 @@
 #include "MathSenderTester.hpp"
 #include "STest/Pick/Pick.hpp"
 
-namespace MathProject {
+namespace ObcProject {
 
 // ----------------------------------------------------------------------
 // Construction and destruction
@@ -103,4 +103,4 @@ void MathSenderTester ::
     ASSERT_EVENTS_RESULT(0, result);
 }
 
-}  // namespace MathProject
+}  // namespace ObcProject

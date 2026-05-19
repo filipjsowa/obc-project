@@ -4,10 +4,10 @@
 // \brief  cpp file for MathSender component implementation class
 // ======================================================================
 
-#include "MathProject/Components/MathSender/MathSender.hpp"
+#include "ObcProject/Components/MathSender/MathSender.hpp"
 #include <cmath>
 
-namespace MathProject {
+namespace ObcProject {
 
 // ----------------------------------------------------------------------
 // Component construction and destruction
@@ -82,4 +82,4 @@ void MathSender ::
     );
 }
 
-}  // namespace MathProject
+}  // namespace ObcProject

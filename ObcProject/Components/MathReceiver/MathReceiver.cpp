@@ -4,10 +4,10 @@
 // \brief  cpp file for MathReceiver component implementation class
 // ======================================================================
 
-#include "MathProject/Components/MathReceiver/MathReceiver.hpp"
+#include "ObcProject/Components/MathReceiver/MathReceiver.hpp"
 #include <cmath>
 
-namespace MathProject {
+namespace ObcProject {
 
 // ----------------------------------------------------------------------
 // Component construction and destruction
@@ -139,4 +139,4 @@ void MathReceiver ::
     }
 }
 
-}  // namespace MathProject
+}  // namespace ObcProject

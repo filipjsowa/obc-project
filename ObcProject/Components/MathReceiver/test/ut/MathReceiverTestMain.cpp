@@ -8,7 +8,7 @@
 #include "STest/Random/Random.hpp"
 
 TEST(Nominal, AddCommand) {
-    MathProject::MathReceiverTester tester;
+    ObcProject::MathReceiverTester tester;
     tester.testAdd();
     tester.testSub();
     tester.testThrottle();

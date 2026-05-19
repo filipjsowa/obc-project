@@ -1,5 +1,5 @@
 # In: MathSender.fpp
-module MathProject {
+module ObcProject {
 
   @ Component for sending a math operation
   active component MathSender {

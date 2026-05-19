@@ -4,12 +4,12 @@
 // \brief  hpp file for MathReceiver component implementation class
 // ======================================================================
 
-#ifndef MathProject_MathReceiver_HPP
-#define MathProject_MathReceiver_HPP
+#ifndef ObcProject_MathReceiver_HPP
+#define ObcProject_MathReceiver_HPP
 
-#include "MathProject/Components/MathReceiver/MathReceiverComponentAc.hpp"
+#include "ObcProject/Components/MathReceiver/MathReceiverComponentAc.hpp"
 
-namespace MathProject {
+namespace ObcProject {
 
 class MathReceiver final : public MathReceiverComponentBase {
   public:
@@ -36,7 +36,7 @@ class MathReceiver final : public MathReceiverComponentBase {
     //! Port for receiving the math operation
     void mathOpIn_handler(FwIndexType portNum,            //!< The port number
                           F32 val1,                       //!< The first operand
-                          const MathProject::MathOp& op,  //!< The operation
+                          const ObcProject::MathOp& op,  //!< The operation
                           F32 val2                        //!< The second operand
                           ) override;
 
@@ -64,6 +64,6 @@ class MathReceiver final : public MathReceiverComponentBase {
                                          ) override;
 };
 
-}  // namespace MathProject
+}  // namespace ObcProject
 
 #endif

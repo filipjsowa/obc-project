@@ -4,13 +4,13 @@
 // \brief  hpp file for MathReceiver component test harness implementation class
 // ======================================================================
 
-#ifndef MathProject_MathReceiverTester_HPP
-#define MathProject_MathReceiverTester_HPP
+#ifndef ObcProject_MathReceiverTester_HPP
+#define ObcProject_MathReceiverTester_HPP
 
-#include "MathProject/Components/MathReceiver/MathReceiver.hpp"
-#include "MathProject/Components/MathReceiver/MathReceiverGTestBase.hpp"
+#include "ObcProject/Components/MathReceiver/MathReceiver.hpp"
+#include "ObcProject/Components/MathReceiver/MathReceiverGTestBase.hpp"
 
-namespace MathProject {
+namespace ObcProject {
 
 class MathReceiverTester final : public MathReceiverGTestBase {
   public:
@@ -88,6 +88,6 @@ class MathReceiverTester final : public MathReceiverGTestBase {
     MathReceiver component;
 };
 
-}  // namespace MathProject
+}  // namespace ObcProject
 
 #endif

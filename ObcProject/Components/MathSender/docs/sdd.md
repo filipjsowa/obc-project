@@ -1,4 +1,4 @@
-# MathProject::MathSender
+# ObcProject::MathSender
 
 Active component used for sending operations and operands to the MathReceiver.
 

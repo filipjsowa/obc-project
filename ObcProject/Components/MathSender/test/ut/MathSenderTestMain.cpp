@@ -8,12 +8,12 @@
 #include "STest/Random/Random.hpp"
 
 TEST(Nominal, AddCommand) {
-    MathProject::MathSenderTester tester;
+    ObcProject::MathSenderTester tester;
     tester.testAddCommand();
 }
 
 TEST(Nominal, Result) {
-    MathProject::MathSenderTester tester;
+    ObcProject::MathSenderTester tester;
     tester.testResult();
 }
 

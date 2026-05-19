@@ -4,13 +4,13 @@
 // \brief  hpp file for MathSender component test harness implementation class
 // ======================================================================
 
-#ifndef MathProject_MathSenderTester_HPP
-#define MathProject_MathSenderTester_HPP
+#ifndef ObcProject_MathSenderTester_HPP
+#define ObcProject_MathSenderTester_HPP
 
-#include "MathProject/Components/MathSender/MathSender.hpp"
-#include "MathProject/Components/MathSender/MathSenderGTestBase.hpp"
+#include "ObcProject/Components/MathSender/MathSender.hpp"
+#include "ObcProject/Components/MathSender/MathSenderGTestBase.hpp"
 
-namespace MathProject {
+namespace ObcProject {
 
 class MathSenderTester final : public MathSenderGTestBase {
   public:
@@ -69,6 +69,6 @@ class MathSenderTester final : public MathSenderGTestBase {
     MathSender component;
 };
 
-}  // namespace MathProject
+}  // namespace ObcProject
 
 #endif

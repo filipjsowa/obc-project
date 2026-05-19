@@ -7,7 +7,7 @@
 #include "MathReceiverTester.hpp"
 #include "STest/Pick/Pick.hpp"
 
-namespace MathProject {
+namespace ObcProject {
 
 // ----------------------------------------------------------------------
 // Construction and destruction
@@ -193,4 +193,4 @@ void MathReceiverTester ::
 
 }
 
-}  // namespace MathProject
+}  // namespace ObcProject

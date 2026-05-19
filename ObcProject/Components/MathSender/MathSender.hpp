@@ -4,12 +4,12 @@
 // \brief  hpp file for MathSender component implementation class
 // ======================================================================
 
-#ifndef MathProject_MathSender_HPP
-#define MathProject_MathSender_HPP
+#ifndef ObcProject_MathSender_HPP
+#define ObcProject_MathSender_HPP
 
-#include "MathProject/Components/MathSender/MathSenderComponentAc.hpp"
+#include "ObcProject/Components/MathSender/MathSenderComponentAc.hpp"
 
-namespace MathProject {
+namespace ObcProject {
 
 class MathSender final : public MathSenderComponentBase {
   public:
@@ -47,7 +47,7 @@ class MathSender final : public MathSenderComponentBase {
     void DO_MATH_cmdHandler(FwOpcodeType opCode,     //!< The opcode
                             U32 cmdSeq,              //!< The command sequence number
                             F32 val1,                //!< The first operand
-                            MathProject::MathOp op,  //!< The operation
+                            ObcProject::MathOp op,  //!< The operation
                             F32 val2                 //!< The second operand
                             ) override;
                         
@@ -57,6 +57,6 @@ class MathSender final : public MathSenderComponentBase {
 
 };
 
-}  // namespace MathProject
+}  // namespace ObcProject
 
 #endif
