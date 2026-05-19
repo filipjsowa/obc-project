@@ -114,17 +114,14 @@ module ObcProject {
       rateGroup1.RateGroupMemberOut[2] -> systemResources.run
       rateGroup1.RateGroupMemberOut[3] -> ComCcsds.comQueue.run
       rateGroup1.RateGroupMemberOut[4] -> ComCcsds.aggregator.timeout
-      rateGroup2.RateGroupMemberOut[5] -> MpuImu.imuManager.run
-      rateGroup2.RateGroupMemberOut[6] -> mathReceiver.schedIn
-      rateGroup2.RateGroupMemberOut[7] -> cmdSeq.schedIn
+      rateGroup1.RateGroupMemberOut[5] -> cmdSeq.schedIn
 
 
 
       # Rate group 2
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup2] -> rateGroup2.CycleIn
-
-
-
+      rateGroup2.RateGroupMemberOut[0] -> MpuImu.imuManager.run
+      rateGroup2.RateGroupMemberOut[1] -> mathReceiver.schedIn
 
 
       # Rate group 3

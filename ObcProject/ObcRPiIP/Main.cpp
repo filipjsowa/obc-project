@@ -95,7 +95,7 @@ int main(int argc, char* argv[]) {
 
     // Setup, cycle, and teardown topology
     ObcProject::setupTopology(inputs, bins);
-    ObcProject::startRateGroups(Fw::TimeInterval(1,0));  // Program loop cycling rate groups at 20Hz
+    ObcProject::startRateGroups(Fw::TimeInterval(0,50000));  // Program loop cycling rate groups at 20Hz
     ObcProject::teardownTopology(inputs, bins);
     Fw::Logger::log("Exiting...\n");
     return 0;

@@ -116,7 +116,7 @@ ServoComponent ::~ServoComponent() {
 
 void ServoComponent::SET_ANGLE_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, F32 angle)
 {
-    // m_overwritten = !m_overwritten;
+    m_overwritten = !m_overwritten;
     if (angle < 0.0f || angle > 180.0f) {
 
         this->log_WARNING_HI_InvalidAngle(angle);
@@ -153,10 +153,10 @@ void ServoComponent::SET_ANGLE_cmdHandler(FwOpcodeType opCode, U32 cmdSeq, F32 a
 
 
 void ServoComponent ::angleIn_handler(FwIndexType portNum, F32 angle) {
-    // if(!m_overwritten){
+    if(!m_overwritten){
         Fw::String angle_s;
         angle_s.format("angle is %f\n", angle);
-        Fw::Logger::log(angle_s);
+        // Fw::Logger::log(angle_s);
 
         if (angle < 0.0f || angle > 180.0f) {
 
@@ -177,7 +177,7 @@ void ServoComponent ::angleIn_handler(FwIndexType portNum, F32 angle) {
             this->log_WARNING_HI_PigpioError(pigpioStatus);
             return;
         }
-        // }
+        }
 }
 
 }  // namespace ObcProject

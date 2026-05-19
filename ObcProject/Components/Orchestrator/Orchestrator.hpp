@@ -34,6 +34,7 @@ class Orchestrator final : public OrchestratorComponentBase {
     //! Get data from the imu
     void imu_data_handler(FwIndexType portNum,  //!< The port number
                           const MpuImu::ImuData& data) override;
+    int skip{0};
 };
 
 }  // namespace ObcProject

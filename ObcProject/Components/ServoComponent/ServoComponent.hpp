@@ -8,7 +8,7 @@
 #define ObcProject_ServoComponent_HPP
 
 #include "ObcProject/Components/ServoComponent/ServoComponentComponentAc.hpp"
-// #include <atomic>
+#include <atomic>
 #ifdef HAVE_PIGPIO
 #include "/opt/pigpio/include/pigpio.h"
 #endif
@@ -53,7 +53,7 @@ class ServoComponent final : public ServoComponentComponentBase {
     bool m_registered;
     int s_users{0};
     bool s_initialized{false};
-    // std::atomic<bool> m_overwritten{false};
+    std::atomic<bool> m_overwritten{false};
         
     //! Handler implementation for angleIn
     void angleIn_handler(FwIndexType portNum,  //!< The port number
