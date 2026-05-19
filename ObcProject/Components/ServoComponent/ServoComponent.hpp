@@ -63,7 +63,7 @@ class ServoComponent final : public ServoComponentComponentBase {
                          U32 cmdSeq,            //!< The command sequence number
                          F32 angle              //!< The angle to set
                          ) override;
-  
+      
   private:
     ServoDriver m_servo;  // GPIO pin 18 (PWM0)
 };

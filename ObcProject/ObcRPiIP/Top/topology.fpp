@@ -38,6 +38,7 @@ module ObcProject {
     instance lcdManager
     instance bufferMgr
     instance mathReceiver
+    instance servoComponent
 
   # ----------------------------------------------------------------------
   # Pattern graph specifiers

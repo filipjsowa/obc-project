@@ -30,7 +30,8 @@ endif()
 register_fprime_library(
     SOURCES "${CMAKE_CURRENT_LIST_DIR}/ServoComponent.cpp"
     AUTOCODER_INPUTS "${CMAKE_CURRENT_LIST_DIR}/ServoComponent.fpp"
-    DEPENDS ${SERVO_DEPS}
+    DEPENDS 
+    ${SERVO_DEPS}
 )
 ### Unit Tests ###
 # register_fprime_ut(
