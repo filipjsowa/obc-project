@@ -38,6 +38,7 @@ module ObcProject {
     instance lcdManager
     instance bufferMgr
     instance mathReceiver
+    instance servoComponent
 
   # ----------------------------------------------------------------------
   # Pattern graph specifiers
@@ -113,14 +114,15 @@ module ObcProject {
       rateGroup1.RateGroupMemberOut[2] -> systemResources.run
       rateGroup1.RateGroupMemberOut[3] -> ComCcsds.comQueue.run
       rateGroup1.RateGroupMemberOut[4] -> ComCcsds.aggregator.timeout
-      rateGroup1.RateGroupMemberOut[5] -> MpuImu.imuManager.run
-      rateGroup1.RateGroupMemberOut[6] -> mathReceiver.schedIn
+      rateGroup1.RateGroupMemberOut[5] -> cmdSeq.schedIn
 
 
 
       # Rate group 2
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup2] -> rateGroup2.CycleIn
-      rateGroup2.RateGroupMemberOut[0] -> cmdSeq.schedIn
+      rateGroup2.RateGroupMemberOut[0] -> MpuImu.imuManager.run
+      rateGroup2.RateGroupMemberOut[1] -> mathReceiver.schedIn
+
 
       # Rate group 3
       rateGroupDriver.CycleOut[Ports_RateGroups.rateGroup3] -> rateGroup3.CycleIn
@@ -142,6 +144,8 @@ module ObcProject {
         MpuImu.imuManager.imu_data -> orchestrator.imu_data
         orchestrator.imu_data_out -> lcdManager.imu_data
         orchestrator.imu_data_for_angle -> mathReceiver.mathOpIn
+        mathReceiver.mathResultOut -> servoComponent.angleIn
+
 
         lcdManager.tcpSend -> tcpClient.$send
         lcdManager.allocate -> bufferMgr.bufferGetCallee

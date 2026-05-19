@@ -23,14 +23,13 @@ LcdManager ::~LcdManager() {}
 
 void LcdManager::send_helper(const MpuImu::ImuData& data){
     Fw::String hello{};
-    hello.format("Acceleration:\n"
-               "x: %f \n"
-               "y: %f \n"
-               "z: %f \n", 
-               data.get_acceleration().get_x(), 
-               data.get_acceleration().get_y(), 
-               data.get_acceleration().get_z());
+    
+    hello.format("PRINT_LINE,1,Acc x%f\0PRINT_LINE,2,Acc y%f\0PRINT_LINE,3,Acc z%f"
+            ,data.get_acceleration().get_x()
+            ,data.get_acceleration().get_y()
+            ,data.get_acceleration().get_z());  
 
+    
     // for null termination
     U32 needed_size = hello.length() + 1;
     Fw::Buffer my_buffer = this->allocate_out(0, needed_size);
