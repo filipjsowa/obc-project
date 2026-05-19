@@ -49,7 +49,8 @@ module ObcProject {
   # ----------------------------------------------------------------------
   # Queued component instances
   # ----------------------------------------------------------------------
-
+  instance mathReceiver: ObcProject.MathReceiver base id 0x2700 \
+    queue size Default.QUEUE_SIZE
 
   # ----------------------------------------------------------------------
   # Passive component instances

@@ -47,6 +47,7 @@ module ObcProject {
 
         output port imu_data_out: MpuImu.ImuDataPort
 
+        output port imu_data_for_angle: OpRequest
 
         event imuReceived(imuData: string) severity activity high id 0 format "Received data {}"
 

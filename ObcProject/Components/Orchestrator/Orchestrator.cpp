@@ -21,10 +21,8 @@ Orchestrator ::~Orchestrator() {}
 // ----------------------------------------------------------------------
 
 void Orchestrator ::imu_data_handler(FwIndexType portNum, const MpuImu::ImuData& data) {
-    // Fw::String temp;
-    // data.toString(temp);
-    // log_ACTIVITY_HI_imuReceived(temp);
     this->imu_data_out_out(0, data);
+    this->imu_data_for_angle_out(0, data.get_rotation().get_x(), MathOp::ANG, data.get_rotation().get_z());
 }
 
 }  // namespace ObcProject
